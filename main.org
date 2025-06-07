@@ -1,0 +1,28 @@
+#+TITLE: SSH in emacs with =begin_src=
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+
+* Connecting to SSH
+Base thing is to try any command to server/VM. I set up EC2 instance on AWS cloud.
+You have to make sure that your =begin_src= block has the information about where to run those commands. To do that use:  =#+begin_src shell :dir /ssh:ubuntu@18.153.79.168:/home/ubuntu=.
+If you have private/public keys pair configured, it should run without any problems. When password is required, you will get prompt in emacs. Emacs also ask you if you want to store that password so you won't need to write it again. But REMBMBER. If you agree to that, the password will be stored in plaintext in your =~/= directory (you will see path to the file).
+
+** Checking files on home directory
+#+begin_src shell :dir /ssh:ubuntu@18.153.79.168:/home/ubuntu
+  ls -al
+#+end_src
+
+** Testing more complicated operations via SSH
+
+#+begin_src shell :dir /ssh:ubuntu@18.153.79.168:/home/ubuntu
+  mkdir -p testing_directory
+  cd testing_directory
+  touch test_file.sh
+  echo "echo Hello po raz drugi" > test_file.sh
+  chmod +x test_file.sh
+  ./test_file.sh
+  rm test_file.sh
+  cd ..
+  rm -rf testing_directory
+  ls -al
+#+end_src
+
