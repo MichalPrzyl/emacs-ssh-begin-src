@@ -11,7 +11,7 @@ If you have private/public keys pair configured, it should run without any probl
   ls -al
 #+end_src
 
-** Testing more complicated operations via SSH
+** Testing more complicated operations via src-begin-via-ssh
 
 #+begin_src shell :dir /ssh:ubuntu@18.153.79.168:/home/ubuntu
   mkdir -p testing_directory
