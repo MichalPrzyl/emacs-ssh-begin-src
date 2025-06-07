@@ -3,8 +3,13 @@
 
 * Connecting to SSH
 Base thing is to try any command to server/VM. I set up EC2 instance on AWS cloud.
-You have to make sure that your =begin_src= block has the information about where to run those commands. To do that use:  =#+begin_src shell :dir /ssh:ubuntu@18.153.79.168:/home/ubuntu=. (temporary IP address, go head, try to brute-force that ssh, I dare you :)).
+You have to make sure that your =begin_src= block has the information about where to run those commands. To do that use:  =#+begin_src shell :dir /ssh:ubuntu@18.153.79.168:/home/ubuntu#+end_src=. (temporary IP address, go head, try to brute-force that ssh, I dare you :)).
 If you have private/public keys pair configured, it should run without any problems. When password is required, you will get prompt in emacs. Emacs also ask you if you want to store that password so you won't need to write it again. But REMBMBER. If you agree to that, the password will be stored in plaintext in your =~/= directory (you will see path to the file).
+
+#+begin_src 
+begin_src shell :dir /ssh:ubuntu@18.153.79.168:/home/ubuntu
+end_src
+#+end_src
 
 ** Checking files on home directory
 #+begin_src shell :dir /ssh:ubuntu@18.153.79.168:/home/ubuntu
